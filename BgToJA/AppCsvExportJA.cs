@@ -270,7 +270,7 @@ namespace App
 				AppendConvertedData(dbview, dt, bgform, 0, 80);
 
 				//■ CSV の作成。
-				csvtext = MakeCsv(dt, bgform, 80, 15,true, true);
+				csvtext = MakeCsv(dt, bgform, 80, 15, hasHeader:false, stringEscape:true);
 				
 				// 一旦コンバート成功としておく。
 				convresult = ConvertStatus.Success;

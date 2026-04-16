@@ -19,7 +19,7 @@ namespace App
 		public static string ExportFileDir = @"file\";
 #else
 		/// <summary>インポートファイル名</summary>
-		public static string ImportFileDir = @"C:\種苗奉行DT￥";
+		public static string ImportFileDir = @"C:\種苗奉行DT\";
 		/// <summary>エクスポートファイル名</summary>
 		public static string ExportFileDir = @"C:\種苗JA送信DT\";
 #endif
