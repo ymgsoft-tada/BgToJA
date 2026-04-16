@@ -1,0 +1,4 @@
+GControlGcTextBoxEx.GcTextBoxEx, comset, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+GrapeCity.Win.Editors.GcTextBox, GrapeCity.Win.Editors.v60, Version=6.0.2011.630, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
+GControlGcTextBoxEx.GcTextBoxEx, comset, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+GrapeCity.Win.Editors.GcShortcut, GrapeCity.Win.Editors.v60, Version=6.0.2011.630, Culture=neutral, PublicKeyToken=0ce01a33ce55ca12
