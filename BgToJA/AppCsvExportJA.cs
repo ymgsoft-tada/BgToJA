@@ -28,20 +28,20 @@ namespace App
 		{
 			get
 			{
-				if (sm != null) return sm.Table;
+				if (smg != null) return smg.Table;
 
 				return null;
 			}
 			set
 			{
 				// 商品管理クラスを初期化
-				sm = new ShohinManager();
-				sm.Init(value);
+				smg = new ShohinManager();
+				smg.Init(value);
 			}
 		}
 
 		// 商品管理クラス
-		ShohinManager sm;
+		ShohinManager smg;
 
 		/// <summary>
 		/// 出力定義
@@ -262,39 +262,6 @@ namespace App
 				fielddefs.Add(new FieldDef(ExportFormat.出報伝票県別フィールド,	FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.伝票備考,				FDef_Null,	FieldType.Number,	255));
 
-				//fielddefs.Add(new FieldDef(ExportFormat.スタッフコード,	convertCode,	FieldType.String,	255,	t_staff.FCD_Staff));
-				//fielddefs.Add(new FieldDef(ExportFormat.スタッフ名,		FDef_String,	FieldType.String,	255,	t_staff.FSTF_Name));
-				//fielddefs.Add(new FieldDef(ExportFormat.フリガナ,		FDef_String,	FieldType.String,	255,	t_staff.FSTF_NameFurigane));
-				//fielddefs.Add(new FieldDef(ExportFormat.旧姓,			FDef_String,	FieldType.String,	255,	t_staff.FSTF_NameOld));
-				//fielddefs.Add(new FieldDef(ExportFormat.性別,			convertSex,		FieldType.String,	255));
-				//fielddefs.Add(new FieldDef(ExportFormat.職種区分,		convertJob,		FieldType.String,	255));
-				//fielddefs.Add(new FieldDef(ExportFormat.職務コード,		convertSMCode,	FieldType.String,	255));
-				//fielddefs.Add(new FieldDef(ExportFormat.職務名,			convertSMName,	FieldType.String,	255));
-
-				//fielddefs.Add(new FieldDef(ExportFormat.現況,			convertGenkyo,	FieldType.String,	255));
-				//fielddefs.Add(new FieldDef(ExportFormat.生年月日,		formatDate,		FieldType.String,	255,	t_staff.FSTF_DateBirthday));
-				//fielddefs.Add(new FieldDef(ExportFormat.入社日,			formatDate,		FieldType.String,	255,	t_staff.FSTF_DateNyusha));
-				//fielddefs.Add(new FieldDef(ExportFormat.退社日,			formatDate,		FieldType.String,	255,	t_staff.FSTF_DateTaishoku));
-
-				//fielddefs.Add(new FieldDef(ExportFormat.電話番号,		FDef_String,	FieldType.String,	255,	t_staff.FSTF_Tel1));
-				//fielddefs.Add(new FieldDef(ExportFormat.携帯番号,		FDef_String,	FieldType.String,	255,	t_staff.FSTF_Tel2));
-				//fielddefs.Add(new FieldDef(ExportFormat.Email,			FDef_String,	FieldType.String,	255,	t_staff.FSTF_Mail1));
-				//fielddefs.Add(new FieldDef(ExportFormat.携帯メール,		FDef_String,	FieldType.String,	255,	t_staff.FSTF_Mail2));
-				//fielddefs.Add(new FieldDef(ExportFormat.郵便番号,		FDef_String,	FieldType.String,	255,	t_staff.FSTF_Post));
-				//fielddefs.Add(new FieldDef(ExportFormat.住所１,			FDef_String,	FieldType.String,	255,	t_staff.FSTF_Addr1));
-				//fielddefs.Add(new FieldDef(ExportFormat.住所２,			FDef_String,	FieldType.String,	255,	t_staff.FSTF_Addr2));
-
-				//fielddefs.Add(new FieldDef(ExportFormat.銀行コード,		FDef_String,		FieldType.String,	255,	t_staff.FSTF_BankCode));
-				//fielddefs.Add(new FieldDef(ExportFormat.銀行名,			convertBankName,	FieldType.String,	255));
-				//fielddefs.Add(new FieldDef(ExportFormat.支店コード,		FDef_String,		FieldType.String,	255,	t_staff.FSTF_BankShitenCode));
-				//fielddefs.Add(new FieldDef(ExportFormat.支店名,			convertShitenName,	FieldType.String,	255));
-				//fielddefs.Add(new FieldDef(ExportFormat.口座種別,		convertKozaType,	FieldType.String,	255));
-				//fielddefs.Add(new FieldDef(ExportFormat.口座番号,		FDef_String,		FieldType.String,	255,	t_staff.FSTF_BankKozaNo));
-				//fielddefs.Add(new FieldDef(ExportFormat.口座名義,		FDef_String,		FieldType.String,	255,	t_staff.FSTF_BankKozaName));
-
-				//fielddefs.Add(new FieldDef(ExportFormat.提出先コード,	convertTeishutsusakiCD,	FieldType.String,	255));
-				//fielddefs.Add(new FieldDef(ExportFormat.提出先名,		convertTeishutsusakiName,	FieldType.String,	255));
-
 
 				//■ 変換後テーブル作成。
 				DataTable	dt = MakeDataTable();
@@ -323,6 +290,7 @@ namespace App
 			return StrConv.ToWide(FDef_String(dv, args));
 		}
 
+		// サブコード（インクリメント用）
 		int sub_cd;
 
 		protected string convSeqNo(DBView dv, params object[] args)
@@ -391,6 +359,7 @@ namespace App
 			return DateTime.Now.ToString("yyyyMMdd");
 		}
 
+		/// <summary>送料コード</summary>
 		const string SHOHIN_SORYO_CODE = "566907";
 
 		protected string convSoryo(DBView dv, params object[] args)
@@ -411,7 +380,7 @@ namespace App
 
 			if (code.IndexOf(SHOHIN_SORYO_CODE) == 0)
 			{
-				/// 送料なら金額セット
+				// 送料なら金額セット
 				return Cast.String(dv.CurrentRow[AppCsvImportBugyo.売価金額]);
 			}
 
@@ -428,7 +397,7 @@ namespace App
 				// 2～6番目の文字だけ取得
 				code = code.Substring(2,4);
 
-				Shohin sh = sm.GetByCode(code);
+				Shohin sh = smg.GetByCode(code);
 
 				if (sh != null)
 				{
