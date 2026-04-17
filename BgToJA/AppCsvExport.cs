@@ -219,7 +219,7 @@ namespace App
 		}
 		
 		/// <summary>
-		/// フィールド変換リストに従ってテーブルを作成。
+		/// フィールド変換リストに従ってテーブルを作成します。
 		/// </summary>
 		/// <returns>作成したテーブル。</returns>
 		public DataTable MakeDataTable()
@@ -242,9 +242,9 @@ namespace App
 			
 			return dt;
 		}
-		
+
 		/// <summary>
-		/// データテーブルから CSV を作成します。
+		/// 変換処理を実行し データテーブルへ格納します。
 		/// </summary>
 		/// <param name="srcdv">変換前データビュー。</param>
 		/// <param name="dstdt">変換後データテーブル。</param>
@@ -306,7 +306,7 @@ namespace App
 		}
 		
 		/// <summary>
-		/// データテーブルから CSV を作成します。
+		/// データテーブルから CSV用文字列データ を作成します。
 		/// </summary>
 		/// <param name="dt">データテーブル。</param>
 		/// <param name="bgform">（必要な場合）プログレスバー用</param>
@@ -375,7 +375,7 @@ namespace App
 		}
 		
 		/// <summary>
-		/// 作成した CSV ファイルを保存します。
+		/// 作成した CSV用データ をファイルへ保存します。
 		/// </summary>
 		public virtual void FileSave()
 		{
