@@ -31,7 +31,7 @@ namespace App
 		/// <summary>
 		/// リビジョン
 		/// </summary>
-		public const string AppRevision = ".1";
+		public const string AppRevision = ".2";
 
 		/// <summary></summary>
 		public const string AppTitle = "売上データ変換ForJA";

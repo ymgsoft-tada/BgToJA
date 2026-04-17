@@ -237,15 +237,15 @@ namespace App
 				fielddefs.Add(new FieldDef(ExportFormat.諸掛コード,			FDef_Null,		FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.数量非計算区分,		convSoryo,		FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
 				fielddefs.Add(new FieldDef(ExportFormat.サイン,				FDef_Null,		FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.数量,				FDef_Null,		FieldType.Number,	255));
+				fielddefs.Add(new FieldDef(ExportFormat.数量,				FDef_String,	FieldType.Number,	255,	AppCsvImportBugyo.数量));
 				fielddefs.Add(new FieldDef(ExportFormat.金額区分,			convSoryo,		FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
-				fielddefs.Add(new FieldDef(ExportFormat.受入単価,			FDef_Null,		FieldType.Number,	255));
+				fielddefs.Add(new FieldDef(ExportFormat.受入単価,			FDef_String,	FieldType.Number,	255,	AppCsvImportBugyo.単価));
 				fielddefs.Add(new FieldDef(ExportFormat.受入金額,			convKingaku,	FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
 				fielddefs.Add(new FieldDef(ExportFormat.本部間単価,			FDef_Null,		FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.本部間金額,			FDef_Null,		FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.供給単価,			FDef_Null,		FieldType.Number,	255));
-				
-				fielddefs.Add(new FieldDef(ExportFormat.供給金額,			FDef_Null,		FieldType.Number,	255));
+				fielddefs.Add(new FieldDef(ExportFormat.供給単価,			FDef_String,	FieldType.Number,	255,	AppCsvImportBugyo.売単価));
+
+				fielddefs.Add(new FieldDef(ExportFormat.供給金額,			FDef_String,	FieldType.Number,	255,	AppCsvImportBugyo.売価金額));
 				fielddefs.Add(new FieldDef(ExportFormat.明細備考,			FDef_Null,		FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.メーカ照合ＮＯ,		FDef_Null,		FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.出報明細商品グループ別フィールド,	FDef_Null,	FieldType.Number,	255));
@@ -260,7 +260,7 @@ namespace App
 				fielddefs.Add(new FieldDef(ExportFormat.伝票仮払消費税額,		FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.出報伝票商品グループ別フィールド,	FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.出報伝票県別フィールド,	FDef_Null,	FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.伝票備考,				FDef_Null,	FieldType.Number,	255));
+				fielddefs.Add(new FieldDef(ExportFormat.伝票備考,				convWide,	FieldType.Number,	255,	AppCsvImportBugyo.摘要));
 
 
 				//■ 変換後テーブル作成。
