@@ -216,7 +216,7 @@ namespace App
 				fielddefs.Add(new FieldDef(ExportFormat.供給受渡条件コード,	FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.元伝ＮＯ,			FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.元伝年月日,			FDef_Null,	FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.事故摘要コード,		FDef_Null,	FieldType.Number,	255));
+				fielddefs.Add(new FieldDef(ExportFormat.事故摘要コード,		convTekiyo,	FieldType.Number,	255,	AppCsvImportBugyo.売価金額));
 				fielddefs.Add(new FieldDef(ExportFormat.分送区分,			FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.ＪＡ発注ＮＯ,		FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.伝票行ＮＯ,			convSubCd,	FieldType.Number,	255));
@@ -229,23 +229,23 @@ namespace App
 				fielddefs.Add(new FieldDef(ExportFormat.荷姿コード,			FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.メーカコード,		FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.型式,				FDef_Null,	FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.品名名称,			convShohin,	FieldType.Number,	255,		AppCsvImportBugyo.商品コード));
+				fielddefs.Add(new FieldDef(ExportFormat.品名名称,			convShohin,	FieldType.Number,	30,			AppCsvImportBugyo.商品コード)); // 全角30文字(60バイト)で切る(出力用テーブルに入れる)
 				fielddefs.Add(new FieldDef(ExportFormat.特別区分,			FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.レス区分,			FDef_Null,	FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.予約当用区分,		convStringOne,	FieldType.Number,	255));
+				fielddefs.Add(new FieldDef(ExportFormat.予約当用区分,		FDef_Null,	FieldType.Number,	255));
 
 				fielddefs.Add(new FieldDef(ExportFormat.諸掛コード,			FDef_Null,		FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.数量非計算区分,		convSoryo,		FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
-				fielddefs.Add(new FieldDef(ExportFormat.サイン,				FDef_Null,		FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.数量,				FDef_String,	FieldType.Number,	255,	AppCsvImportBugyo.数量));
-				fielddefs.Add(new FieldDef(ExportFormat.金額区分,			convSoryo,		FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
+				fielddefs.Add(new FieldDef(ExportFormat.数量非計算区分,		convKbnSuryo,	FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
+				fielddefs.Add(new FieldDef(ExportFormat.サイン,				convSign,		FieldType.Number,	255,	AppCsvImportBugyo.売価金額));
+				fielddefs.Add(new FieldDef(ExportFormat.数量,				convSuryo,		FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
+				fielddefs.Add(new FieldDef(ExportFormat.金額区分,			convKbnKingaku,	FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
 				fielddefs.Add(new FieldDef(ExportFormat.受入単価,			FDef_String,	FieldType.Number,	255,	AppCsvImportBugyo.単価));
 				fielddefs.Add(new FieldDef(ExportFormat.受入金額,			convKingaku,	FieldType.Number,	255,	AppCsvImportBugyo.商品コード));
 				fielddefs.Add(new FieldDef(ExportFormat.本部間単価,			FDef_Null,		FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.本部間金額,			FDef_Null,		FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.供給単価,			FDef_String,	FieldType.Number,	255,	AppCsvImportBugyo.売単価));
 
-				fielddefs.Add(new FieldDef(ExportFormat.供給金額,			FDef_String,	FieldType.Number,	255,	AppCsvImportBugyo.売価金額));
+				fielddefs.Add(new FieldDef(ExportFormat.供給金額,			convKyoKingaku,	FieldType.Number,	255,	AppCsvImportBugyo.売価金額));
 				fielddefs.Add(new FieldDef(ExportFormat.明細備考,			FDef_Null,		FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.メーカ照合ＮＯ,		FDef_Null,		FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.出報明細商品グループ別フィールド,	FDef_Null,	FieldType.Number,	255));
@@ -260,7 +260,7 @@ namespace App
 				fielddefs.Add(new FieldDef(ExportFormat.伝票仮払消費税額,		FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.出報伝票商品グループ別フィールド,	FDef_Null,	FieldType.Number,	255));
 				fielddefs.Add(new FieldDef(ExportFormat.出報伝票県別フィールド,	FDef_Null,	FieldType.Number,	255));
-				fielddefs.Add(new FieldDef(ExportFormat.伝票備考,				convWide,	FieldType.Number,	255,	AppCsvImportBugyo.摘要));
+				fielddefs.Add(new FieldDef(ExportFormat.伝票備考,				convWide,	FieldType.Number,	20,		AppCsvImportBugyo.摘要)); // 全角20文字(40バイト)で切る(出力用テーブルに入れる)
 
 
 				//■ 変換後テーブル作成。
@@ -359,14 +359,45 @@ namespace App
 			return DateTime.Now.ToString("yyyyMMdd");
 		}
 
-		/// <summary>送料コード</summary>
-		const string SHOHIN_SORYO_CODE = "566907";
+		/// <summary>商品以外を示すコード(一部)リスト</summary>
+		readonly string[] SHOHIN_ETC_CODES = { "566800", "565900", "566907", "566950" };
 
-		protected string convSoryo(DBView dv, params object[] args)
+		/// <summary>特定商品コードを含むかチェック</summary>
+		protected bool containsCode(string target)
+		{
+			foreach (var tmpCd in SHOHIN_ETC_CODES)
+			{
+				// 特定コードに該当した場合、trueで終了
+				if (target.IndexOf(tmpCd) == 0)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		// 数量非計算区分
+		protected string convKbnSuryo(DBView dv, params object[] args)
 		{
 			string code = FDef_String(dv, args);
 
-			if (code.IndexOf(SHOHIN_SORYO_CODE) == 0)
+			// 特定商品コードに該当する場合、1を返却
+			if (containsCode(code) == true)
+			{
+				return "1";
+			}
+
+			return null; // ブランク
+		}
+
+		// 金額区分
+		protected string convKbnKingaku(DBView dv, params object[] args)
+		{
+			string code = FDef_String(dv, args);
+
+			// 特定商品コードに該当する場合、1を返却
+			if (containsCode(code) == true)
 			{
 				return "1";
 			}
@@ -374,19 +405,43 @@ namespace App
 			return "0";
 		}
 
+		// 数量
+		protected string convSuryo(DBView dv, params object[] args)
+		{
+			string code = FDef_String(dv, args); // 商品コード
+
+			// 特定商品コードに該当する場合、ブランク返却
+			if (containsCode(code) == true)
+			{
+				return null;
+			}
+
+			// 数量を返却(絶対値)
+			return Cast.String(Math.Abs(Cast.Int32(dv.CurrentRow[AppCsvImportBugyo.数量])));
+		}
+
+		// 受入金額
 		protected string convKingaku(DBView dv, params object[] args)
 		{
 			string code = FDef_String(dv, args);
 
-			if (code.IndexOf(SHOHIN_SORYO_CODE) == 0)
+			// 特定商品コードに該当する場合、売価金額を返却(絶対値)
+			if (containsCode(code) == true)
 			{
-				// 送料なら金額セット
-				return Cast.String(dv.CurrentRow[AppCsvImportBugyo.売価金額]);
+				return Cast.String(Math.Abs(Cast.Decimal(dv.CurrentRow[AppCsvImportBugyo.売価金額])));
 			}
 
-			return null;
+			return null; // ブランク
 		}
 
+		// 供給金額
+		protected string convKyoKingaku(DBView dv, params object[] args)
+		{
+			// 売価金額を返却(絶対値)
+			return Cast.String(Math.Abs(Cast.Decimal(FDef_String(dv, args))));
+		}
+
+		// 品名名称
 		protected string convShohin(DBView dv, params object[] args)
 		{
 			string code = FDef_String(dv, args);
@@ -401,11 +456,44 @@ namespace App
 
 				if (sh != null)
 				{
-					return $"{sh.Name}{name}";
+					// すべて全角変換
+					return StrConv.ToWide($"{sh.Name} {name}");
+					
 				}
 			}
 
 			return null;
+		}
+
+		/// <summary>事故摘要コード_返品</summary>
+		const string JIKOTEKIYO_CODE_HENPIN = "V";
+
+		// 事故摘要コード
+		protected string convTekiyo(DBView dv, params object[] args)
+		{
+			string kingaku = FDef_String(dv, args); // 「売価金額」の取得
+
+			// 売価金額がマイナス値か判定
+			if (Cast.Decimal(kingaku) < 0)
+			{
+				return JIKOTEKIYO_CODE_HENPIN; // 返品コードを返却	
+			}
+
+			return null; // ブランクを返却 (FDef_Null()と同結果)
+		}
+
+		// サイン
+		protected string convSign(DBView dv, params object[] args)
+		{
+			string kingaku = FDef_String(dv, args); // 「売価金額」の取得
+
+			// 売価金額がマイナス値か判定
+			if (Cast.Decimal(kingaku) < 0)
+			{
+				return "-"; // マイナス記号を返却	
+			}
+
+			return null; // ブランクを返却
 		}
 	}
 }

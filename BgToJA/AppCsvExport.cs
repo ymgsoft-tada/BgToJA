@@ -527,7 +527,7 @@ namespace App
 		/// value を指定の長さにカット。
 		/// </summary>
 		/// <param name="s">value</param>
-		/// <param name="maxlength">長さ（バイト長）</param>
+		/// <param name="maxlength">長さ（×バイト長 〇文字数?）</param>
 		/// <param name="isoverempty">長さを超えた場合切る(false)か、ないことにする(true)か</param>
 		/// <returns>カットした value</returns>
 		object	valueCut(string s, int maxlength, bool isoverempty)
