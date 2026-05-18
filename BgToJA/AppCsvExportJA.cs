@@ -452,13 +452,18 @@ namespace App
 				// 2～6番目の文字だけ取得
 				code = code.Substring(2,4);
 
-				Shohin sh = smg.GetByCode(code);
+				Shohin sh = smg.GetByCode(code); // 品種コードよりshohin.csv内に情報があれば取得
 
-				if (sh != null)
+				if (sh != null) // shohin.csvに該当データありの商品
 				{
-					// すべて全角変換
+					// 「品種名+スペース+商品名」を全角変換
 					return StrConv.ToWide($"{sh.Name} {name}");
-					
+
+				}
+				else // shohin.csvに該当なし商品
+				{
+					// 「商品名」を全角変換
+					return StrConv.ToWide($"{name}");
 				}
 			}
 
