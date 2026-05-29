@@ -19,9 +19,9 @@ namespace App
 		/// <summary>設定値初期化を取得します。</summary>
 		public bool InitAll { get { return  iInitCode.Checked;}}
 		/// <summary>奉行ファイルのパス</summary>
-		public string BugyoFile { get { return iBugyo.Text; }}
+		public string BugyoFile { get { return iBugyoSelect.UcText; } }
 		/// <summary>JAフォルダのパス</summary>
-		public string JAFolder { get { return iJA.Text; }}
+		public string JAFolder { get { return iJASelect.UcText; } }
 
 		/// <summary>
 		/// コンストラクタ
@@ -36,11 +36,17 @@ namespace App
 		/// </summary>
 		protected override void AppForm_Shown(object sender, EventArgs e)
 		{
-			AppDbRule.SetControlByRule(iBugyo, AppDbRule.RuleHulf200);
-			AppDbRule.SetControlByRule(iJA, AppDbRule.RuleHulf200);
+			AppDbRule.SetControlByRule(iBugyoSelect.UcTextBox, AppDbRule.RuleHulf200); // ※AppDbRule.RuleHulf200: テキスト領域に設定するルール
+			AppDbRule.SetControlByRule(iJASelect.UcTextBox, AppDbRule.RuleHulf200);
 
-			iBugyo.Text = AppPath.GetImportFilePath();
-			iJA.Text	= AppPath.GetExportFolderPath();
+			iBugyoSelect.UcText = AppPath.GetImportFilePath();
+			iJASelect.UcText = AppPath.GetExportFolderPath();
+
+			// UcFileSelectコントロールの設定
+			iBugyoSelect.FileDialogType = UcFileSelect.eFileDialogType.FileOpen;
+			iBugyoSelect.FileFilter = "CSV (コンマ区切り) (*.csv)|*.csv|すべてのファイル(*.*)|*.*";
+			iJASelect.FileDialogType = UcFileSelect.eFileDialogType.FolderSelect;
+//			iJASelect.FileFilter = "旧富士山財務会計ファイル(*.vbfz)|*.vbfz|すべてのファイル(*.*)|*.*";
 
 			// イベント登録
 			btnCancel.Click += BtnCancel_Click;

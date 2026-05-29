@@ -31,7 +31,7 @@ namespace App
 		/// <summary>
 		/// リビジョン
 		/// </summary>
-		public const string AppRevision = ".4";
+		public const string AppRevision = ".5";
 
 		/// <summary></summary>
 		public const string AppTitle = "売上データ変換ForJA";
@@ -43,7 +43,7 @@ namespace App
 		public const string ReportFolder = @"report\";
 
 
-		/// <summary>遠隔サポートフィル</summary>
+		/// <summary>遠隔サポートファイル</summary>
 		public const string RemoteSupportFile = "TeamViewerQS_ja.exe";
 
 		/// <summary>遠隔実行ファイルパス</summary>
