@@ -90,7 +90,7 @@ namespace App
 		/// <returns></returns>
 		public static string GetExportFilePath(string date)
 		{
-			return $"{GetExportFolderPath()}{string.Format(ExportFileName, date)}";
+			return $"{GetExportFolderPath()}{string.Format(ExportFileName, date.Substring(2))}"; //dateは"yyMMdd"へ
 		}
 	}
 }

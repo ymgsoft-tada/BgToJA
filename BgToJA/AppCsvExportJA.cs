@@ -305,6 +305,12 @@ namespace App
 		protected string convDate(DBView dv, params object[] args)
 		{
 			return Regex.Replace(FDef_String(dv, args), "/", "");
+
+			// 形式「yyyy/M/d」で来た場合の0埋め用 ※仕様上不要
+			//string dtStr = FDef_String(dv, args); // csv値取得
+			//DateTime dtTmp;
+			//bool bl = DateTime.TryParse(dtStr, out dtTmp);
+			//return dtTmp.ToString("yyyyMMdd");
 		}
 
 		/// <summary>システム日付を"yyyyMMdd"形式でセット</summary>
@@ -485,10 +491,10 @@ namespace App
 		{
 			string code = FDef_String(dv, args); // 商品コード
 
-			// 特定商品コード(送料)に該当する場合、ブランク値とする
+			// 特定商品コード(送料)に該当する場合、0返却
 			if (containsCode(code, SHOHIN_CODES_SORYO) == true)
 			{
-				return null;
+				return "0";
 			}
 			// 特定商品コード(除外対象)に該当する場合、0返却
 			if (containsCode(code, SHOHIN_CODES_ITAKU) == true)
