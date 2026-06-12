@@ -184,7 +184,7 @@ namespace App
 					case AppCsvExport.ConvertStatus.SaveFailed :
 						icon = MessageBoxIcon.Warning;
 						cap = "ファイルの保存に失敗しました。";
-						msg = "保存先のファイルが存在し、使用されている可能性があります。";
+						msg = "保存先フォルダが存在しない、\nまたはファイルが使用されている可能性があります。";
 						break;
 					default :
 						icon = MessageBoxIcon.Error;
