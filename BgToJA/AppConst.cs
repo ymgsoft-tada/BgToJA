@@ -23,15 +23,15 @@ namespace App
 		/// <summary>
 		/// メジャーバージョン
 		/// </summary>
-		public const string AppMajor = "0";
+		public const string AppMajor = "1";
 		/// <summary>
 		/// マイナーバージョン
 		/// </summary>
-		public const string AppMinor = ".7";
+		public const string AppMinor = ".0";
 		/// <summary>
 		/// リビジョン
 		/// </summary>
-		public const string AppRevision = ".7";
+		public const string AppRevision = ".0";
 
 		/// <summary></summary>
 		public const string AppTitle = "売上データ変換ForJA";
